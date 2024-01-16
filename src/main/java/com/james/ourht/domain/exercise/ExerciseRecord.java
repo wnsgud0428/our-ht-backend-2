@@ -15,7 +15,8 @@ public class ExerciseRecord {
     private Long id;
 
     @ManyToOne
-    private Member memberId;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @Enumerated(EnumType.STRING)
     private ExerciseType exerciseType;
