@@ -14,10 +14,10 @@ import java.util.List;
 public class ExerciseRecordService {
     private final ExerciseRecordRepository exerciseRecordRepository;
 
-    public Long startExercise(Member member, String exerciseType) {
+    public Long startExercise(Member member, ExerciseType exerciseType) {
         ExerciseRecord record = new ExerciseRecord();
         record.setMember(member);
-        record.setExerciseType(ExerciseType.valueOf(exerciseType));
+        record.setExerciseType(exerciseType);
         record.setStartedAt(LocalDateTime.now());
 
         exerciseRecordRepository.save(record);

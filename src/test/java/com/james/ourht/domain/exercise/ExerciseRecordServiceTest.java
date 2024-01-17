@@ -32,7 +32,7 @@ class ExerciseRecordServiceTest {
         Member member = createMember();
 
         // when
-        Long recordId = exerciseRecordService.startExercise(member, "SQUAT");
+        Long recordId = exerciseRecordService.startExercise(member, ExerciseType.SQUAT);
         try {
             Thread.sleep(2500);
         } catch (InterruptedException e) {
@@ -53,7 +53,7 @@ class ExerciseRecordServiceTest {
 
         int exerciseCount = 10;
         for (int i = 0; i < exerciseCount; i++) {
-            Long recordId = exerciseRecordService.startExercise(member, "SQUAT");
+            Long recordId = exerciseRecordService.startExercise(member, ExerciseType.SQUAT);
             exerciseRecordService.stopExercise(recordId);
         }
 
