@@ -37,4 +37,6 @@ out/
 .vscode/
 
 ### 내가 추가
-*.bkp
+/ERD/.$ourht.drawio.bkp
+/ERD/.$ourht.drawio.dtmp
+
