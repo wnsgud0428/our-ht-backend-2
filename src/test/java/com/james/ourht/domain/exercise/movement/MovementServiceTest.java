@@ -16,7 +16,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
-//@Transactional
+@Transactional
 class MovementServiceTest {
 
     @Autowired
@@ -49,16 +49,17 @@ class MovementServiceTest {
 
         // then
         ExerciseRecord record = exerciseRecordRepository.findById(exerciseId).get();
-//        List<Movement> movementsFromRecord = record.getMovements();
-//        for (int i = 0; i < squatCount; i++) {
-//            Movement m = movementsFromRecord.get(i);
-//            m.getId();
-//            assertThat(m.getExerciseRecord()).isEqualTo(exerciseId);
-//        }
-
+        
+            // record 객체의 컬렉션 필드 검사
+        List<Movement> movementsFromRecordObject = record.getMovements();
+        assertThat(movementsFromRecordObject.size()).isEqualTo(squatCount);
+        for (int i = 0; i < squatCount; i++) {
+            Movement movement = movementsFromRecordObject.get(i);
+            assertThat(movement.getExerciseRecord().getId()).isEqualTo(exerciseId);
+        }
+            
+            // repository에서 찾아온 movement 리스트 검사
         List<Movement> movementsFromRepository = movementRepository.findAll();
-//
-//        assertThat(movementsFromRecord.size()).isEqualTo(squatCount);
         assertThat(movementsFromRepository.size()).isEqualTo(squatCount);
     }
 

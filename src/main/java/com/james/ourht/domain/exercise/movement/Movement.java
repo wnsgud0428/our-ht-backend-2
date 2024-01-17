@@ -18,12 +18,20 @@ public abstract class Movement {
     private Long id;
 
     @ManyToOne
-//    @JoinColumn(name = "record_id")
+    @JoinColumn(name = "record_id")
     private ExerciseRecord exerciseRecord;
 
     @Enumerated(EnumType.STRING)
     private MovementAccuracy accuracy;
 
     private LocalDateTime movementTime;
+
+    public abstract Movement createMovement(ExerciseRecord record, MovementAccuracy accuracy, boolean criticalFlag);
+
+    /** 연관관계 메서드 */
+    public void setExerciseRecord(ExerciseRecord exerciseRecord) {
+        this.exerciseRecord = exerciseRecord;
+        exerciseRecord.getMovements().add(this);
+    }
 
 }

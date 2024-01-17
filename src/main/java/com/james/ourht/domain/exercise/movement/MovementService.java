@@ -22,21 +22,12 @@ public class MovementService {
         Movement movement = null;
         // 안좋은 설계...
         if (exerciseType == ExerciseType.SQUAT) {
-            Squat squat = new Squat();
-            squat.setBackNotBent(criticalFlag);
-            movement = squat;
+            movement = new Squat().createMovement(record, accuracy, criticalFlag);
         } else if (exerciseType == ExerciseType.PUSH_UP) {
-            PushUp pushUp = new PushUp();
-            pushUp.setHipGood(criticalFlag);
-            movement = pushUp;
+            movement = new PushUp().createMovement(record, accuracy, criticalFlag);
         } else if (exerciseType == ExerciseType.PULL_UP) {
-            PullUp pullUp = new PullUp();
-            pullUp.setScapulaMoveGood(criticalFlag);
-            movement = pullUp;
+            movement = new PullUp().createMovement(record, accuracy, criticalFlag);
         }
-        movement.setExerciseRecord(record);
-        movement.setAccuracy(accuracy);
-        movement.setMovementTime(LocalDateTime.now());
 
         movementRepository.save(movement);
 
