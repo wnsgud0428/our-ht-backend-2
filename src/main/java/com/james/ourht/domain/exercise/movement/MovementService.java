@@ -16,8 +16,8 @@ public class MovementService {
     private final ExerciseRecordRepository exerciseRecordRepository;
     private final MovementRepository movementRepository;
 
-    public Long makeMovement(ExerciseType exerciseType, Long exerciseId, MovementAccuracy accuracy, boolean criticalFlag) {
-        ExerciseRecord record = exerciseRecordRepository.findById(exerciseId).get();
+    public Long makeMovement(ExerciseType exerciseType, Long recordId, MovementAccuracy accuracy, boolean criticalFlag) {
+        ExerciseRecord record = exerciseRecordRepository.findById(recordId).get();
 
         Movement movement = null;
         // 안좋은 설계...

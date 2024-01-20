@@ -1,6 +1,7 @@
 package com.james.ourht.domain.exercise.movement;
 
 import com.james.ourht.domain.exercise.ExerciseRecord;
+import com.james.ourht.domain.exercise.ExerciseType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@DiscriminatorValue("PULL")
+@DiscriminatorValue("PULL-UP")
 @Getter @Setter
 public class PullUp extends Movement{
     private boolean isScapulaMoveGood;

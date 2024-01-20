@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@DiscriminatorValue("PUSH")
+@DiscriminatorValue("PUSH-UP")
 @Getter @Setter
 public class PushUp extends Movement{
     private boolean isHipGood;

@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@DiscriminatorValue("SQ")
+@DiscriminatorValue("SQUAT")
 @Getter @Setter
 public class Squat extends Movement{
     private boolean isBackNotBent;
