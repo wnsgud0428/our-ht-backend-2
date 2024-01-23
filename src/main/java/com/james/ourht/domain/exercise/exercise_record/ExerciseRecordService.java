@@ -1,5 +1,6 @@
-package com.james.ourht.domain.exercise;
+package com.james.ourht.domain.exercise.exercise_record;
 
+import com.james.ourht.domain.exercise.ExerciseType;
 import com.james.ourht.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ExerciseRecordService {
     private final ExerciseRecordRepository exerciseRecordRepository;
+    private final ExerciseRecordRepositoryForCollection exerciseRecordRepositoryForCollection;
 
     public Long startExercise(Member member, ExerciseType exerciseType) {
         ExerciseRecord record = new ExerciseRecord();
@@ -31,9 +33,9 @@ public class ExerciseRecordService {
         return record.getId();
     }
 
-    // todo: 유저의 전체 기록 조회
-    public List<ExerciseRecord> findRecords() {
-        List<ExerciseRecord> records = exerciseRecordRepository.findAll();
+    // todo: 한 유저의 운동 전체 기록 조회
+    public List<ExerciseRecord> findRecords(Member member) {
+        List<ExerciseRecord> records = exerciseRecordRepositoryForCollection.findExerciseRecordsByMemberUsingFetchJoin(member);
 
         return records;
     }

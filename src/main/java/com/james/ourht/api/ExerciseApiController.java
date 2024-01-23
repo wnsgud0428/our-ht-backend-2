@@ -1,21 +1,21 @@
 package com.james.ourht.api;
 
-import com.james.ourht.domain.exercise.ExerciseRecord;
-import com.james.ourht.domain.exercise.ExerciseRecordRepository;
-import com.james.ourht.domain.exercise.ExerciseRecordService;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecord;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecordRepository;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecordService;
 import com.james.ourht.domain.exercise.ExerciseType;
+import com.james.ourht.domain.exercise.movement.Movement;
 import com.james.ourht.domain.exercise.movement.MovementAccuracy;
 import com.james.ourht.domain.exercise.movement.MovementService;
 import com.james.ourht.domain.member.Member;
 import com.james.ourht.domain.member.MemberService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -104,4 +104,51 @@ public class ExerciseApiController {
             this.movementId = movementId;
         }
     }
+
+    @GetMapping("/api/member/{memberId}/exercises")
+    public List<ExerciseRecordDto> getExerciseRecordByMemberId(@PathVariable("memberId") Long memberId) {
+        Member member = memberService.findMemberById(memberId);
+
+        List<ExerciseRecord> records = exerciseRecordService.findRecords(member);
+        List<ExerciseRecordDto> results = records.stream()
+                .map(o -> new ExerciseRecordDto(o))
+                .collect(Collectors.toList());
+
+        return results;
+    }
+
+    @Data
+    static class ExerciseRecordDto {
+        private Long exerciseRecordId;
+        private ExerciseType exerciseType;
+        private Member member;
+        private LocalDateTime startedAt;
+        private LocalDateTime endedAt;
+        private List<MovementDto> movements;
+
+        public ExerciseRecordDto(ExerciseRecord exerciseRecord) {
+            exerciseRecordId = exerciseRecord.getId();
+            exerciseType = exerciseRecord.getExerciseType();
+            member = exerciseRecord.getMember();
+            startedAt = exerciseRecord.getStartedAt();
+            endedAt = exerciseRecord.getEndedAt();
+            movements = exerciseRecord.getMovements().stream()
+                    .map(o -> new MovementDto(o))
+                    .collect(Collectors.toList());
+        }
+    }
+
+    @Data
+    static class MovementDto {
+        private Long movementId;
+        private MovementAccuracy movementAccuracy;
+        private LocalDateTime movementTime;
+
+        public MovementDto(Movement movement) {
+            movementId = movement.getId();
+            movementAccuracy = movement.getAccuracy();
+            movementTime = movement.getMovementTime();
+        }
+    }
+
 }
