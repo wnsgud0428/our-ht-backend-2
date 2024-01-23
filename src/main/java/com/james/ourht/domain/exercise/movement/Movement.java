@@ -1,7 +1,6 @@
 package com.james.ourht.domain.exercise.movement;
 
-import com.james.ourht.domain.BaseTimeEntity;
-import com.james.ourht.domain.exercise.ExerciseRecord;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecord;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

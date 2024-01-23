@@ -1,8 +1,8 @@
 package com.james.ourht.domain.exercise.movement;
 
-import com.james.ourht.domain.exercise.ExerciseRecord;
-import com.james.ourht.domain.exercise.ExerciseRecordRepository;
-import com.james.ourht.domain.exercise.ExerciseRecordService;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecord;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecordRepository;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecordService;
 import com.james.ourht.domain.exercise.ExerciseType;
 import com.james.ourht.domain.member.Member;
 import com.james.ourht.domain.member.MemberRepository;

@@ -1,13 +1,11 @@
 package com.james.ourht.domain.exercise.movement;
 
-import com.james.ourht.domain.exercise.ExerciseRecord;
-import com.james.ourht.domain.exercise.ExerciseRecordRepository;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecord;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecordRepository;
 import com.james.ourht.domain.exercise.ExerciseType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 @Service
 @Transactional

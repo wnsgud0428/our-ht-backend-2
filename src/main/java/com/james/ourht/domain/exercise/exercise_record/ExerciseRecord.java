@@ -1,5 +1,6 @@
-package com.james.ourht.domain.exercise;
+package com.james.ourht.domain.exercise.exercise_record;
 
+import com.james.ourht.domain.exercise.ExerciseType;
 import com.james.ourht.domain.exercise.movement.Movement;
 import com.james.ourht.domain.member.Member;
 import jakarta.persistence.*;

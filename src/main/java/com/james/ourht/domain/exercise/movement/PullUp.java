@@ -1,7 +1,6 @@
 package com.james.ourht.domain.exercise.movement;
 
-import com.james.ourht.domain.exercise.ExerciseRecord;
-import com.james.ourht.domain.exercise.ExerciseType;
+import com.james.ourht.domain.exercise.exercise_record.ExerciseRecord;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
